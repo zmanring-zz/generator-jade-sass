@@ -9,8 +9,24 @@ module.exports = yeoman.generators.Base.extend({
 
     // Have Yeoman greet the user.
     this.log(yosay(
-      'Welcome to the slick ' + chalk.red('Jade') + ' generator!'
+      'Welcome to the Zach\'s slick ' + chalk.red('Jade') + ' generator!'
     ));
+
+    var prompts = [{
+      type: 'confirm',
+      name: 'install',
+      message: 'Would you like to install this package?',
+      default: true
+    }];
+
+    this.prompt(prompts, function (props) {
+      this.props = props;
+
+      if(this.props.install) {
+        done();
+      }
+
+    }.bind(this));
 
   },
 
@@ -25,8 +41,16 @@ module.exports = yeoman.generators.Base.extend({
         this.destinationPath('bower.json')
       );
       this.fs.copy(
-        this.templatePath('_Gruntfile.json'),
-        this.destinationPath('Gruntfile.json')
+        this.templatePath('_Gruntfile.js'),
+        this.destinationPath('Gruntfile.js')
+      );
+      this.fs.copy(
+        this.templatePath('app'),
+        this.destinationPath('app')
+      );
+      this.fs.copy(
+        this.templatePath('tasks'),
+        this.destinationPath('tasks')
       );
     },
 
