@@ -1,6 +1,7 @@
 {
   "name": "generator-jade",
   "version": "0.0.0",
+  "private": true,
   "description": "Yeoman generator",
   "license": "MIT",
   "main": "app/index.js",
