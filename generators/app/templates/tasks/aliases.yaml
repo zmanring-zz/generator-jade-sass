@@ -1,0 +1,25 @@
+default:
+  - serve
+
+serve:
+  - clean:server
+  - jade
+  - sass
+  - autoprefixer
+  - connect:server
+  - watch
+
+build:
+  - clean:build
+  - jade
+  - sass
+  - autoprefixer
+  - copy:dist
+  - useminPrepare
+  - concat
+  - cssmin
+  - uglify
+  - imagemin
+  - svgmin
+  - htmlmin
+  - usemin
